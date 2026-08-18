@@ -214,3 +214,4 @@ Then add every environment variable from `.env.example` in **Project Settings â†
 The rest of the site is a static build (`dist/`) and can be hosted anywhere. However, `api/contact.ts` is written specifically for Vercel's Node serverless function signature (`VercelRequest`/`VercelResponse`) â€” on another platform you'd need to port it to that platform's function format (e.g. Netlify Functions) and update the fetch URL in `src/utils/contactService.ts` if the endpoint path differs. Without this, the contact form's `fetch('/api/contact')` call will simply 404 and notifications won't send.
 
 Remember to set the correct `og:url` / `canonical` values in `index.html` once you have a production domain.
+"# portfolio" 
