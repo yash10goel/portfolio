@@ -37,7 +37,7 @@ export function FreelanceCTA() {
             </Button>
             {profile.whatsapp && (
               <Button href={whatsappHref(profile.whatsapp)} target="_blank" rel="noreferrer" size="lg" variant="secondary">
-                WhatsApp Me
+                WhatsApp Mes
                 <ArrowRightIcon width={17} height={17} />
               </Button>
             )}
