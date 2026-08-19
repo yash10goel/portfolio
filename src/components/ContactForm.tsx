@@ -121,9 +121,9 @@ export function ContactForm() {
         <span className="flex h-12 w-12 items-center justify-center rounded-full bg-accent-soft text-accent">
           <CheckIcon width={22} height={22} />
         </span>
-        <h3 className="mt-5 font-display text-xl font-semibold text-text">Thanks for reaching out!</h3>
+        <h3 className="mt-5 font-display text-xl font-semibold text-text">Message sent successfully.</h3>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">
-          Your message has been received. I&rsquo;ll get back to you as soon as possible.
+          I&rsquo;ll get back to you soon.
         </p>
         <Button type="button" variant="secondary" className="mt-6" onClick={resetForSecondMessage}>
           Send another message

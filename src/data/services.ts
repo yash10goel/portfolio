@@ -4,71 +4,65 @@ export const services: Service[] = [
   {
     id: 'web-app-dev',
     title: 'Web Application Development',
-    description:
-      'Modern, responsive web applications built with React, Angular or Next.js — architected for maintainability, not just a working demo.',
+    description: 'Modern, responsive and scalable web applications for businesses.',
     deliverables: ['Component-driven architecture', 'Responsive, accessible UI', 'Clean state management'],
   },
   {
-    id: 'full-stack',
-    title: 'Full-Stack Development',
-    description:
-      'End-to-end ownership from database to UI — frontend, backend, and the API layer that connects them.',
-    deliverables: ['Frontend + backend integration', 'Database modeling', 'REST API design'],
+    id: 'react-nextjs',
+    title: 'React / Next.js Development',
+    description: 'Fast, modern frontend applications using React, Next.js and TypeScript.',
+    deliverables: ['Component-driven architecture', 'Reusable UI systems', 'Performance-focused rendering'],
+  },
+  {
+    id: 'angular-dev',
+    title: 'Angular Development',
+    description: 'Enterprise-grade Angular applications, dashboards and management systems.',
+    deliverables: ['Scalable Angular architecture', 'State management with Redux', 'Enterprise dashboard UIs'],
   },
   {
     id: 'dotnet-api',
-    title: '.NET & API Development',
-    description:
-      'Reliable C# / ASP.NET Core backends and REST APIs built for business applications that need to hold up under real use.',
+    title: '.NET API Development',
+    description: 'Secure and scalable REST APIs using C# and ASP.NET Core.',
     deliverables: ['ASP.NET Core services', 'Secure REST APIs', 'Authentication & RBAC'],
   },
   {
     id: 'admin-dashboards',
-    title: 'Admin Dashboards & RBAC Systems',
-    description:
-      'Business dashboards with tables, filters, roles and permissions — built on real IAM and ITSM experience, not a generic template.',
+    title: 'Admin Dashboards & Management Systems',
+    description: 'Data-driven dashboards, admin panels and business management applications.',
     deliverables: ['Role-based access control', 'Data tables & filtering', 'Permission-aware UI'],
   },
   {
     id: 'bug-fixing',
-    title: 'Bug Fixing & Existing App Development',
-    description:
-      'Stepping into an existing React, Angular or .NET codebase to fix issues, extend features, or stabilize what is already there.',
-    deliverables: ['Root-cause debugging', 'Safe, incremental changes', 'Regression-aware fixes'],
-  },
-  {
-    id: 'maintenance',
-    title: 'Application Maintenance',
-    description:
-      'Ongoing development, bug fixing and technical support for applications already in production.',
-    deliverables: ['Scheduled or on-demand support', 'Dependency & security upkeep', 'Incremental improvements'],
+    title: 'Bug Fixing & Existing Project Development',
+    description: 'Fix bugs, improve existing applications, integrate APIs and add new features.',
+    deliverables: ['Root-cause debugging', 'API integrations', 'Safe, regression-aware changes'],
   },
 ]
 
 export const processSteps: ProcessStep[] = [
   {
     index: '01',
-    title: 'Understand',
-    description: 'Understand business requirements, goals and constraints before writing a line of code.',
+    title: 'Discuss',
+    description: 'Understand your idea, requirements and goals.',
   },
   {
     index: '02',
     title: 'Plan',
-    description: 'Define architecture, features and a development approach that fits the scope and timeline.',
+    description: 'Define features, architecture and development approach.',
   },
   {
     index: '03',
     title: 'Build',
-    description: 'Develop the frontend, backend, APIs and integrations, with regular progress check-ins.',
+    description: 'Develop the application and provide regular progress updates.',
   },
   {
     index: '04',
-    title: 'Test',
-    description: 'Test functionality, responsiveness and edge cases before anything ships.',
+    title: 'Review',
+    description: 'Test, refine and make improvements based on feedback.',
   },
   {
     index: '05',
-    title: 'Deploy',
-    description: 'Deploy to production and provide support as the application goes live.',
+    title: 'Launch',
+    description: 'Deploy the completed solution and provide handover.',
   },
 ]

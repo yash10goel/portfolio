@@ -20,6 +20,9 @@ export interface Profile {
   github: string
   yearsExperience: string
   availability: string
+  resumeUrl: string
+  /** WhatsApp number in international format, digits only (e.g. "919876543210"). Empty when not configured. */
+  whatsapp: string
 }
 
 export interface TechItem {
@@ -63,6 +66,8 @@ export interface Project {
   tech: string[]
   detail: ProjectDetail
   featured: boolean
+  /** Shown in the top 3 "spotlight" project cards on the Projects section. */
+  spotlight?: boolean
   liveUrl?: string
   /** Live in production but not publicly linkable (internal/confidential enterprise system). */
   inProduction?: boolean

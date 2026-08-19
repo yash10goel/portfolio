@@ -10,16 +10,19 @@ export const profile: Profile = {
   linkedin: 'https://www.linkedin.com/in/yashgoel10',
   github: 'https://github.com/yash10goel',
   yearsExperience: '3+',
-  availability: 'Open to freelance projects',
+  availability: 'Available for Freelance Projects',
+  resumeUrl: '/resume.pdf',
+  // Set VITE_WHATSAPP_NUMBER in .env.local / Vercel env vars (digits only, e.g. 919876543210).
+  // WhatsApp CTAs stay hidden across the site until this is configured — see .env.example.
+  whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER ?? '',
 }
 
 export const navLinks: NavLink[] = [
-  { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
+  { label: 'Services', href: '#services' },
   { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
-  { label: 'Services', href: '#services' },
   { label: 'Contact', href: '#contact' },
 ]
 

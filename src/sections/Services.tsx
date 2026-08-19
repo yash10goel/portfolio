@@ -10,7 +10,7 @@ export function Services() {
       <Container>
         <SectionHeading
           eyebrow="Services"
-          title="How I can help your business."
+          title="What I Can Build For You"
           description="Focused services built directly on production experience — not a generic freelancer menu."
           align="center"
           className="mb-16"

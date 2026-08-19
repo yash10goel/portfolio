@@ -12,6 +12,7 @@ export const techStrip: TechItem[] = [
   { name: 'TypeScript', tier: 'core' },
   { name: 'C#', tier: 'core' },
   { name: '.NET / ASP.NET Core', tier: 'core' },
+  { name: 'Node.js', tier: 'secondary' },
   { name: 'Redux', tier: 'secondary' },
   { name: 'Tailwind CSS', tier: 'secondary' },
   { name: 'PostgreSQL', tier: 'secondary' },
@@ -32,7 +33,7 @@ export const skillGroups: SkillGroup[] = [
   {
     title: 'Backend & APIs',
     description: 'Secure, RESTful services and business logic that hold up in production.',
-    items: ['C#', '.NET', 'ASP.NET Core', 'RESTful API Design', 'Authentication & RBAC'],
+    items: ['C#', '.NET', 'ASP.NET Core', 'Node.js', 'RESTful API Design', 'Authentication & RBAC'],
   },
   {
     title: 'Data & Storage',

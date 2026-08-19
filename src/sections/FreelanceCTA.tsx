@@ -3,6 +3,7 @@ import { Reveal } from '@/components/Reveal'
 import { Button } from '@/components/Button'
 import { GitHubIcon, LinkedInIcon, MailIcon } from '@/components/icons'
 import { profile, socialLinks } from '@/data/profile'
+import { whatsappHref } from '@/utils/whatsapp'
 import { ArrowRightIcon } from '@/components/icons'
 
 const iconMap = {
@@ -22,18 +23,24 @@ export function FreelanceCTA() {
           />
 
           <h2 className="mx-auto max-w-2xl text-balance font-display text-3xl font-semibold tracking-tight text-text sm:text-4xl">
-            Have a project in mind?
+            Have a project in mind? Let&rsquo;s build it.
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-balance text-lg leading-relaxed text-muted">
-            Let&rsquo;s turn your idea into a reliable, scalable application — built by someone who&rsquo;s already
-            shipped enterprise software in production.
+            Tell me what you&rsquo;re looking to build, and let&rsquo;s discuss how I can help turn your idea into a
+            working product.
           </p>
 
-          <div className="mt-9 flex justify-center">
+          <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
             <Button href="#contact" size="lg">
-              Start a Conversation
+              Start a Project
               <ArrowRightIcon width={17} height={17} />
             </Button>
+            {profile.whatsapp && (
+              <Button href={whatsappHref(profile.whatsapp)} target="_blank" rel="noreferrer" size="lg" variant="secondary">
+                WhatsApp Me
+                <ArrowRightIcon width={17} height={17} />
+              </Button>
+            )}
           </div>
 
           <div className="mt-10 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 border-t border-border pt-8">

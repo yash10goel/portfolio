@@ -1,6 +1,7 @@
 import { ThemeProvider } from '@/hooks/useTheme'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { WhatsAppButton } from '@/components/WhatsAppButton'
 import { Home } from '@/pages/Home'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Home />
       </main>
       <Footer />
+      <WhatsAppButton />
     </ThemeProvider>
   )
 }

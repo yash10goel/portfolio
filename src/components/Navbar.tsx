@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Container } from '@/components/Container'
 import { Button } from '@/components/Button'
 import { ThemeToggle } from '@/components/ThemeToggle'
-import { MenuIcon, CloseIcon } from '@/components/icons'
+import { MenuIcon, CloseIcon, GitHubIcon, LinkedInIcon, DownloadIcon } from '@/components/icons'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { useLockBodyScroll } from '@/hooks/useLockBodyScroll'
 import { navLinks, profile } from '@/data/profile'
@@ -59,10 +59,36 @@ export function Navbar() {
           })}
         </nav>
 
-        <div className="hidden items-center gap-3 lg:flex">
+        <div className="hidden items-center gap-1 lg:flex">
+          <a
+            href={profile.github}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="GitHub"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:text-text"
+          >
+            <GitHubIcon width={16} height={16} />
+          </a>
+          <a
+            href={profile.linkedin}
+            target="_blank"
+            rel="noreferrer"
+            aria-label="LinkedIn"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:text-text"
+          >
+            <LinkedInIcon width={16} height={16} />
+          </a>
+          <a
+            href={profile.resumeUrl}
+            download
+            aria-label="Download Resume"
+            className="flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:text-text"
+          >
+            <DownloadIcon width={16} height={16} />
+          </a>
           <ThemeToggle />
-          <Button href="#contact" size="md">
-            Let&rsquo;s Talk
+          <Button href="#contact" size="md" className="ml-2">
+            Start a Project
           </Button>
         </div>
 
@@ -93,8 +119,19 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            <div className="mt-2 flex items-center gap-4 px-3 py-2">
+              <a href={profile.github} target="_blank" rel="noreferrer" className="text-sm font-medium text-muted hover:text-text">
+                GitHub
+              </a>
+              <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-sm font-medium text-muted hover:text-text">
+                LinkedIn
+              </a>
+              <a href={profile.resumeUrl} download className="text-sm font-medium text-muted hover:text-text">
+                Resume
+              </a>
+            </div>
             <Button href="#contact" size="md" className="mt-3 w-full" onClick={() => setIsMenuOpen(false)}>
-              Let&rsquo;s Talk
+              Start a Project
             </Button>
           </Container>
         </div>

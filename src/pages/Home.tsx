@@ -5,6 +5,7 @@ import { Skills } from '@/sections/Skills'
 import { Experience } from '@/sections/Experience'
 import { Projects } from '@/sections/Projects'
 import { Services } from '@/sections/Services'
+import { WhyWorkWithMe } from '@/sections/WhyWorkWithMe'
 import { Process } from '@/sections/Process'
 import { FreelanceCTA } from '@/sections/FreelanceCTA'
 import { Contact } from '@/sections/Contact'
@@ -19,6 +20,7 @@ export function Home() {
       <Experience />
       <Projects />
       <Services />
+      <WhyWorkWithMe />
       <Process />
       <FreelanceCTA />
       <Contact />

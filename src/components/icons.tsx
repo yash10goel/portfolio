@@ -132,3 +132,36 @@ export function SparkIcon(props: IconProps) {
     </svg>
   )
 }
+
+export function DownloadIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 3v12M7 10l5 5 5-5M4 19h16" />
+    </svg>
+  )
+}
+
+export function ChatIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M4 12a8 8 0 1 1 3.2 6.4L4 20l1.3-3.6A7.96 7.96 0 0 1 4 12Z" />
+    </svg>
+  )
+}
+
+export function LayersIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="m12 3 8.5 4.7L12 12.4 3.5 7.7 12 3ZM3.5 12.3 12 17l8.5-4.7M3.5 16.8 12 21.5l8.5-4.7" />
+    </svg>
+  )
+}
+
+export function LayoutIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="4" width="18" height="16" rx="2" />
+      <path d="M3 9.5h18" />
+    </svg>
+  )
+}
