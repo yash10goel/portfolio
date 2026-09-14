@@ -12,9 +12,9 @@ export const profile: Profile = {
   yearsExperience: '3+',
   availability: 'Available for Freelance Projects',
   resumeUrl: '/resume.pdf',
-  // Set VITE_WHATSAPP_NUMBER in .env.local / Vercel env vars (digits only, e.g. 919876543210).
-  // WhatsApp CTAs stay hidden across the site until this is configured — see .env.example.
-  whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER ?? '',
+  // VITE_WHATSAPP_NUMBER (set in .env.local / Vercel env vars) overrides this if present.
+  // Falls back to the real number directly so WhatsApp CTAs work even without that env var set.
+  whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER ?? '919084386006',
 }
 
 export const navLinks: NavLink[] = [
