@@ -22,6 +22,7 @@ export const techStrip: TechItem[] = [
   { name: 'Docker', tier: 'familiar' },
   { name: 'Kubernetes', tier: 'familiar' },
   { name: 'Git', tier: 'secondary' },
+  { name: 'React Native', tier: 'familiar' },
 ]
 
 export const skillGroups: SkillGroup[] = [
@@ -44,6 +45,11 @@ export const skillGroups: SkillGroup[] = [
     title: 'Styling & UI Systems',
     description: 'Scalable, consistent design systems that scale with the product.',
     items: ['Tailwind CSS', 'SCSS', 'Bootstrap', 'MUI'],
+  },
+  {
+    title: 'Mobile Development',
+    description: 'Cross-platform apps for Android and iOS from a single codebase.',
+    items: ['React Native', 'Android', 'iOS'],
   },
   {
     title: 'DevOps & Tooling',

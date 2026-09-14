@@ -67,6 +67,12 @@ export function ProjectModal({ project, onClose }: ProjectModalProps) {
                   In Production
                 </span>
               )}
+              {!project.liveUrl && !project.inProduction && project.inDevelopment && (
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-border-strong px-3 py-1 text-[11px] font-medium text-subtle">
+                  <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-subtle" />
+                  In Development
+                </span>
+              )}
             </div>
             <h2 id="project-modal-title" className="mt-4 font-display text-2xl font-semibold text-text">
               {project.name}

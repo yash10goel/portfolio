@@ -235,6 +235,51 @@ export const projects: Project[] = [
     },
   },
   {
+    id: 'rkgc-mobile-app',
+    name: 'RKGC Group — Mobile App',
+    tagline: 'React Native companion app for RKGC Group, currently in development.',
+    category: 'Frontend',
+    tech: ['React Native'],
+    featured: false,
+    engagement: 'freelance',
+    company: 'RKGC Group',
+    inDevelopment: true,
+    detail: {
+      challenge:
+        'Alongside the RKGC Group website, there was a need for a mobile-first way for visitors to browse the business and get in touch on the go.',
+      solution:
+        'Building a React Native app mirroring the core RKGC Group website experience — browsing business verticals and projects, company information, and lead/job-application submission — currently in active development.',
+      role: 'Freelance developer — building the mobile app independently, same client as the RKGC Group website engagement.',
+      features: [
+        'Browse business verticals and projects',
+        'Company information and credentials',
+        'Lead and job-application submission',
+      ],
+      highlights: ['Built with React Native for a shared codebase across Android and iOS'],
+      outcome: 'In active development — not yet published to the App Store or Play Store.',
+    },
+  },
+  {
+    id: 'wfm-mobile-app',
+    name: 'WFM — Workforce Management App',
+    tagline: 'React Native workforce management app, currently in development.',
+    category: 'Frontend',
+    tech: ['React Native'],
+    featured: false,
+    engagement: 'professional',
+    company: 'Inventia Technology Consultant Pvt. Ltd.',
+    inDevelopment: true,
+    detail: {
+      challenge: 'Enterprise workforce operations needed a dedicated mobile app to complement existing tooling.',
+      solution:
+        'Building a React Native mobile workforce management app as part of ongoing work at Inventia Technology Consultant — currently in active development.',
+      role: 'Mobile developer — building the React Native app.',
+      features: ['Mobile workforce management functionality'],
+      highlights: ['Built with React Native'],
+      outcome: 'In active development — not yet released.',
+    },
+  },
+  {
     id: 'hillberg',
     name: 'Hillberg — Shopify Storefront',
     tagline: 'Shopify theme setup and storefront customization for an apparel & home-lifestyle store.',

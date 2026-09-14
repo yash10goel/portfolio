@@ -71,6 +71,8 @@ export interface Project {
   liveUrl?: string
   /** Live in production but not publicly linkable (internal/confidential enterprise system). */
   inProduction?: boolean
+  /** Actively being built, not yet published/live — shown instead of a Live/In Production badge. */
+  inDevelopment?: boolean
   /** Whether this was done as an employer/client engagement or independent freelance work. */
   engagement: 'professional' | 'freelance'
   /** Employer name (professional) or client name (freelance). */

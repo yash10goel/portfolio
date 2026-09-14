@@ -29,11 +29,23 @@ export function About() {
   return (
     <section id="about" className="py-24 sm:py-32">
       <Container className="grid gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:gap-20">
-        <SectionHeading
-          eyebrow="About"
-          title="I build the software businesses actually run on."
-          description="Not a portfolio of side projects — three-plus years shipping production applications that real teams depend on every day."
-        />
+        <div>
+          <SectionHeading
+            eyebrow="About"
+            title="I build the software businesses actually run on."
+            description="Not a portfolio of side projects — three-plus years shipping production applications that real teams depend on every day."
+          />
+
+          <Reveal delay={100} className="mt-8 max-w-xs">
+            <img
+              src="/yashu.png"
+              alt="Yash Goel"
+              className="aspect-square w-full rounded-2xl border border-border-strong object-cover shadow-card-hover"
+              width={480}
+              height={480}
+            />
+          </Reveal>
+        </div>
 
         <div>
           <Reveal>

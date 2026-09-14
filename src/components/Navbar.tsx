@@ -80,7 +80,7 @@ export function Navbar() {
           </a>
           <a
             href={profile.resumeUrl}
-            download
+            download="Yash-Goel-Resume.pdf"
             aria-label="Download Resume"
             className="flex h-9 w-9 items-center justify-center rounded-full text-muted transition-colors hover:text-text"
           >
@@ -126,7 +126,7 @@ export function Navbar() {
               <a href={profile.linkedin} target="_blank" rel="noreferrer" className="text-sm font-medium text-muted hover:text-text">
                 LinkedIn
               </a>
-              <a href={profile.resumeUrl} download className="text-sm font-medium text-muted hover:text-text">
+              <a href={profile.resumeUrl} download="Yash-Goel-Resume.pdf" className="text-sm font-medium text-muted hover:text-text">
                 Resume
               </a>
             </div>

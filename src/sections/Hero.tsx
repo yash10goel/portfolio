@@ -72,7 +72,7 @@ export function Hero() {
             <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-2">
               <a
                 href={profile.resumeUrl}
-                download
+                download="Yash-Goel-Resume.pdf"
                 className="inline-flex items-center gap-1.5 text-sm font-medium text-muted transition-colors hover:text-accent"
               >
                 <DownloadIcon width={15} height={15} />

@@ -26,15 +26,21 @@ export function ProjectCard({ project, delay = 0, onOpen }: ProjectCardProps) {
           )}
         </div>
         {project.liveUrl && (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-3 py-1 text-[11px] font-medium text-success">
+          <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-success/10 px-3 py-1 text-[11px] font-medium text-success">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-success" />
             Live
           </span>
         )}
         {!project.liveUrl && project.inProduction && (
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-border-strong px-3 py-1 text-[11px] font-medium text-subtle">
+          <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-border-strong px-3 py-1 text-[11px] font-medium text-subtle">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-subtle" />
             In Production
+          </span>
+        )}
+        {!project.liveUrl && !project.inProduction && project.inDevelopment && (
+          <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-border-strong px-3 py-1 text-[11px] font-medium text-subtle">
+            <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-subtle" />
+            In Development
           </span>
         )}
       </div>
