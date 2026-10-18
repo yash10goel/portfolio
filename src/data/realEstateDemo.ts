@@ -75,6 +75,3 @@ export const demoPropertyTypes: Array<'All' | DemoProperty['type']> = ['All', 'A
 export function buildPropertyEnquiry(property: DemoProperty): string {
   return `Hi, I'm interested in the ${property.title} (${property.size}) at ${property.location}, listed at ${property.price}. Please share more details and a suitable time for a site visit.`
 }
-
-export const realEstateWebsiteMessage =
-  'Hi, I saw the real estate website demo on your portfolio. My business type is real estate / property consultant. Please share your packages and quotation for a similar website.'

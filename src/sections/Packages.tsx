@@ -31,7 +31,7 @@ export function Packages() {
             >
               {pkg.highlighted && (
                 <span className="absolute -top-3 left-6 rounded-full bg-accent-fill px-3 py-1 text-xs font-medium text-white">
-                  Best for brokers &amp; consultants
+                  Best for showcasing services or listings
                 </span>
               )}
 

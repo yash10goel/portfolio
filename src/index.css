@@ -32,12 +32,12 @@
   --color-text: 16 18 27;
   --color-muted: 90 97 115;
   --color-subtle: 107 113 130;
-  --color-accent: 74 102 235;
-  --color-accent-fill: 74 102 235;
+  --color-accent: 66 92 224;
+  --color-accent-fill: 66 92 224;
   --color-accent-fill-hover: 54 82 219;
   --color-accent-strong: 54 82 219;
   --color-accent-soft: 233 237 255;
-  --color-success: 21 128 61;
+  --color-success: 20 115 55;
   --color-danger: 220 38 38;
   --color-danger-soft: 254 226 226;
 }

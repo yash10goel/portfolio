@@ -133,7 +133,7 @@ export function QuoteForm() {
         </span>
         <h3 className="mt-5 font-display text-xl font-semibold text-text">Thanks — your request has been sent.</h3>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">
-          I&rsquo;ll get back to you on {values.phone.trim()} with a few questions and a written quote.{' '}
+          I&rsquo;ll get back to you on <span className="whitespace-nowrap">{values.phone.trim()}</span> with a few questions and a written quote.{' '}
           {profile.responseTime}.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">

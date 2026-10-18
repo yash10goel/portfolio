@@ -56,7 +56,8 @@ All resume-derived content lives in `src/data/`:
 - `skills.ts` — tech strip + skill group cards
 - `services.ts` — freelance services + "How It Works" process steps
 - `offer.ts` — website packages (prices, inclusions, per-package WhatsApp messages), the "not included" list, and the quote-form dropdown options
-- `realEstateDemo.ts` — sample listings for the illustrative real estate concept (clearly labelled on the page as sample data — keep it that way)
+- `websiteExamples.ts` — the "Website Examples" section: categories (Business, Service Business, Real Estate, Custom Web Applications) and the examples in each. `kind: 'project'` entries point at a genuine project in `projects.ts` by `projectId` (name, tech, features and live link come from there); `kind: 'concept'` entries are illustrative demos with sample content and are always labelled "Concept demo" on the page — never present them as client work
+- `realEstateDemo.ts` — sample listings for the interactive real estate concept shown under the Real Estate filter (clearly labelled on the page as sample data — keep it that way)
 
 ## WhatsApp CTAs & Quote Form
 

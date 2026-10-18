@@ -1,7 +1,7 @@
 import { Hero } from '@/sections/Hero'
 import { TechStrip } from '@/sections/TechStrip'
 import { Packages } from '@/sections/Packages'
-import { RealEstateDemo } from '@/sections/RealEstateDemo'
+import { WebsiteExamples } from '@/sections/WebsiteExamples'
 import { About } from '@/sections/About'
 import { Skills } from '@/sections/Skills'
 import { Experience } from '@/sections/Experience'
@@ -18,7 +18,7 @@ export function Home() {
       <Hero />
       <TechStrip />
       <Packages />
-      <RealEstateDemo />
+      <WebsiteExamples />
       <Projects />
       <Process />
       <Quote />

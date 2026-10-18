@@ -19,8 +19,8 @@ export const profile: Profile = {
 
 export const navLinks: NavLink[] = [
   { label: 'Packages', href: '#packages' },
-  { label: 'Demo', href: '#demo' },
-  { label: 'Work', href: '#projects' },
+  { label: 'Examples', href: '#examples' },
+  { label: 'Projects', href: '#projects' },
   { label: 'Process', href: '#process' },
   { label: 'About', href: '#about' },
   { label: 'Experience', href: '#experience' },

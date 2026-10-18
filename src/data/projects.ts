@@ -288,7 +288,8 @@ export const projects: Project[] = [
     featured: false,
     engagement: 'freelance',
     company: 'Hillberg',
-    liveUrl: 'https://hillberg.in/',
+    // liveUrl intentionally omitted: hillberg.in returned 402 Payment Required (store offline) as of Oct 2026.
+    // Restore `liveUrl: 'https://hillberg.in/'` once the store loads again.
     detail: {
       challenge:
         'Hillberg needed a Shopify storefront to present a multi-category catalog — apparel, home & lifestyle goods, and accessories — without a fully custom build.',
@@ -300,8 +301,8 @@ export const projects: Project[] = [
         'Collection-based browsing and navigation',
         'Newsletter signup for promotions and new arrivals',
       ],
-      highlights: ['Built on Shopify (Liquid, theme customization)', 'Live storefront handling seasonal collections and sales'],
-      outcome: "Live as Hillberg's public Shopify storefront.",
+      highlights: ['Built on Shopify (Liquid, theme customization)', 'Storefront structured for seasonal collections and sales'],
+      outcome: "Delivered as Hillberg's public Shopify storefront.",
     },
   },
 ]

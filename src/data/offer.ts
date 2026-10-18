@@ -21,11 +21,12 @@ export const websitePackages: WebsitePackage[] = [
     id: 'business',
     name: 'Business Website',
     price: '₹20,000',
-    summary: 'More room to showcase your work — ideal for brokers, consultants and service businesses with listings or projects.',
+    summary:
+      'More room to show what you offer — ideal for clinics, coaching centres, consultants, shops and property businesses.',
     features: [
       'Up to 5 pages',
       'Everything in Starter, where applicable',
-      'Property, service or project showcase',
+      'Service, product, property or project showcase',
       'Two revision rounds',
       'Basic on-page SEO setup (titles, descriptions, headings, sitemap)',
     ],
@@ -51,9 +52,10 @@ export const leadBusinessTypes = [
   'Clinic / healthcare',
   'Restaurant / café',
   'Coaching / education',
-  'Retail shop',
+  'Retail shop / boutique',
   'Salon / fitness',
-  'Professional services',
+  'Consultant / professional services',
+  'Home services (plumbing, electrical, cleaning, repairs)',
   'Startup / software product',
 ]
 
@@ -61,6 +63,7 @@ export const leadRequirements = [
   'New website',
   'Redesign of an existing website',
   'Property / project listing website',
+  'Product catalogue (customers order on WhatsApp)',
   'Landing page for ads',
   'Custom web app, dashboard or API',
   'Fixes or new features on an existing site / app',

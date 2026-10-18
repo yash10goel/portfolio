@@ -10,7 +10,7 @@ import { experience } from '@/data/experience'
 
 const codeLines: { tokens: { text: string; className?: string }[] }[] = [
   { tokens: [{ text: 'const ', className: 'text-accent' }, { text: 'yourWebsite ', className: 'text-text' }, { text: '= {', className: 'text-muted' }] },
-  { tokens: [{ text: '  pages', className: 'text-text' }, { text: ':', className: 'text-muted' }, { text: ' ["Home", "Listings", "Contact"]', className: 'text-success' }, { text: ',', className: 'text-muted' }] },
+  { tokens: [{ text: '  pages', className: 'text-text' }, { text: ':', className: 'text-muted' }, { text: ' ["Home", "Services", "Contact"]', className: 'text-success' }, { text: ',', className: 'text-muted' }] },
   { tokens: [{ text: '  mobileFriendly', className: 'text-text' }, { text: ':', className: 'text-muted' }, { text: ' true', className: 'text-accent' }, { text: ',', className: 'text-muted' }] },
   { tokens: [{ text: '  enquiries', className: 'text-text' }, { text: ':', className: 'text-muted' }, { text: ' ["WhatsApp", "Form"]', className: 'text-success' }, { text: ',', className: 'text-muted' }] },
   { tokens: [{ text: '  builtWith', className: 'text-text' }, { text: ':', className: 'text-muted' }, { text: ' ["React", "TypeScript"]', className: 'text-success' }, { text: ',', className: 'text-muted' }] },
@@ -44,14 +44,14 @@ export function Hero() {
 
           <Reveal delay={80}>
             <h1 className="mt-4 text-balance font-display text-[2.15rem] font-semibold leading-[1.08] tracking-tight text-text sm:text-6xl">
-              Professional Websites for Businesses <span className="text-accent">Ready to Grow</span>
+              Professional Websites for <span className="text-accent">Small Businesses</span>
             </h1>
           </Reveal>
 
           <Reveal delay={160}>
             <p className="mt-4 max-w-xl text-balance text-base leading-relaxed text-muted sm:mt-6 sm:text-lg">
-              I build modern, mobile-friendly websites that help local businesses showcase their services and make it
-              easier for customers to contact them.
+              I build modern, mobile-friendly websites for shops, clinics, coaching centres, consultants, home
+              services and real estate businesses, so customers can see what you offer and contact you easily.
             </p>
           </Reveal>
 
@@ -68,7 +68,7 @@ export function Hero() {
                 Get a Website Quote
                 <ArrowRightIcon width={17} height={17} />
               </Button>
-              <Button href="#projects" size="lg" variant="secondary">
+              <Button href="#examples" size="lg" variant="secondary">
                 View My Work
               </Button>
             </div>
@@ -108,10 +108,10 @@ export function Hero() {
 
           <Reveal delay={350}>
             <p className="mt-6 font-mono text-xs text-subtle">
-              Built with React <span className="mx-1.5 text-border-strong">•</span> Next.js
-              <span className="mx-1.5 text-border-strong">•</span> Angular
-              <span className="mx-1.5 text-border-strong">•</span> TypeScript
-              <span className="mx-1.5 text-border-strong">•</span> C# / .NET
+              Built with React <span aria-hidden className="mx-1.5 text-border-strong">•</span> Next.js
+              <span aria-hidden className="mx-1.5 text-border-strong">•</span> Angular
+              <span aria-hidden className="mx-1.5 text-border-strong">•</span> TypeScript
+              <span aria-hidden className="mx-1.5 text-border-strong">•</span> C# / .NET
             </p>
           </Reveal>
 

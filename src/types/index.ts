@@ -114,3 +114,40 @@ export interface DemoProperty {
   details: string[]
   status: string
 }
+
+export type WebsiteCategory = 'business' | 'service' | 'real-estate' | 'custom'
+
+interface WebsiteExampleBase {
+  id: string
+  /** First entry is the label shown on the card; the example appears under every listed category. */
+  categories: WebsiteCategory[]
+  /** Who the site is for, in plain language, e.g. "Clinic / healthcare practice". */
+  businessType: string
+}
+
+/** A genuine project from data/projects.ts — name, tech, features and links come from there. */
+export interface ProjectWebsiteExample extends WebsiteExampleBase {
+  kind: 'project'
+  projectId: string
+}
+
+/** An illustrative concept with sample content. Always labelled as a concept, never as client work. */
+export interface ConceptWebsiteExample extends WebsiteExampleBase {
+  kind: 'concept'
+  name: string
+  summary: string
+  features: string[]
+  tech: string[]
+  /** Drives the small mock-up rendered on the card. */
+  preview: {
+    brand: string
+    domain: string
+    headline: string
+    sections: string[]
+    cta: string
+  }
+  /** Set when a fuller interactive version exists on the page. */
+  interactiveDemo?: 'real-estate'
+}
+
+export type WebsiteExample = ProjectWebsiteExample | ConceptWebsiteExample
