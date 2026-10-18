@@ -5,9 +5,14 @@ import { processSteps } from '@/data/services'
 
 export function Process() {
   return (
-    <section className="border-t border-border py-24 sm:py-32">
+    <section id="process" className="border-t border-border py-24 sm:py-32">
       <Container>
-        <SectionHeading eyebrow="How I Work" title="A clear process, from idea to production." className="mb-16" />
+        <SectionHeading
+          eyebrow="How It Works"
+          title="A simple process, from first chat to launch."
+          description="You always know what's being built, what it costs and what happens next."
+          className="mb-16"
+        />
 
         <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-5">
           {processSteps.map((step, index) => (

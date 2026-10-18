@@ -20,6 +20,8 @@ export default {
         accent: 'rgb(var(--color-accent) / <alpha-value>)',
         'accent-strong': 'rgb(var(--color-accent-strong) / <alpha-value>)',
         'accent-soft': 'rgb(var(--color-accent-soft) / <alpha-value>)',
+        'accent-fill': 'rgb(var(--color-accent-fill) / <alpha-value>)',
+        'accent-fill-hover': 'rgb(var(--color-accent-fill-hover) / <alpha-value>)',
         success: 'rgb(var(--color-success) / <alpha-value>)',
         danger: 'rgb(var(--color-danger) / <alpha-value>)',
         'danger-soft': 'rgb(var(--color-danger-soft) / <alpha-value>)',

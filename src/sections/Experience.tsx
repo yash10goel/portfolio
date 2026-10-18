@@ -100,7 +100,7 @@ export function Experience() {
                   >
                     <div className="flex flex-wrap items-center gap-3">
                       <h3 className="font-display text-xl font-semibold text-text">{client.company}</h3>
-                      <span className="rounded-full bg-accent-soft px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-accent">
+                      <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-medium uppercase tracking-wide text-accent">
                         Freelance Client
                       </span>
                     </div>

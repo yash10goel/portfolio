@@ -38,7 +38,9 @@ export function About() {
 
           <Reveal delay={100} className="mt-8 max-w-xs">
             <img
-              src="/yashu.png"
+              src="/yashu.webp"
+              loading="lazy"
+              decoding="async"
               alt="Yash Goel"
               className="aspect-square w-full rounded-2xl border border-border-strong object-cover shadow-card-hover"
               width={480}

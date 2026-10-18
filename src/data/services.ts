@@ -42,27 +42,27 @@ export const services: Service[] = [
 export const processSteps: ProcessStep[] = [
   {
     index: '01',
-    title: 'Discuss',
-    description: 'Understand your idea, requirements and goals.',
+    title: 'Talk',
+    description: 'A quick WhatsApp chat or call about your business, your customers and what the website needs to do.',
   },
   {
     index: '02',
-    title: 'Plan',
-    description: 'Define features, architecture and development approach.',
+    title: 'Quote & Scope',
+    description: 'You get a written quote listing the pages, features, revisions and timeline — before any work starts.',
   },
   {
     index: '03',
-    title: 'Build',
-    description: 'Develop the application and provide regular progress updates.',
+    title: 'Design & Build',
+    description: 'I build the site and share a private preview link so you can see it on your own phone as it takes shape.',
   },
   {
     index: '04',
     title: 'Review',
-    description: 'Test, refine and make improvements based on feedback.',
+    description: 'You request changes within the agreed revision rounds, and I refine the content and layout.',
   },
   {
     index: '05',
     title: 'Launch',
-    description: 'Deploy the completed solution and provide handover.',
+    description: 'The site goes live on your domain, and I hand over access and walk you through updating key details.',
   },
 ]

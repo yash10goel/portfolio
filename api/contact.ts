@@ -1,13 +1,15 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 
+/** Submitted by the "Get a Website Quote" form (src/components/QuoteForm.tsx). */
 export interface ContactPayload {
   name: string
-  email: string
   phone: string
-  company: string
-  projectType: string
+  email: string
+  businessType: string
+  city: string
+  requirement: string
   budget: string
-  message: string
+  details: string
 }
 
 export interface ContactEnv {
@@ -40,11 +42,23 @@ function isValidEmail(email: string): boolean {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
+function isValidPhone(phone: string): boolean {
+  return /^\+?\d{10,15}$/.test(phone.replace(/[\s()-]/g, ''))
+}
+
+const MAX_FIELD_LENGTH = 200
+const MAX_DETAILS_LENGTH = 1000
+
 export function validatePayload(payload: ContactPayload): string | null {
   if (!payload.name?.trim()) return 'Name is required.'
-  if (!payload.email?.trim() || !isValidEmail(payload.email)) return 'A valid email is required.'
-  if (!payload.projectType?.trim()) return 'Project type is required.'
-  if (!payload.message?.trim()) return 'Message is required.'
+  if (!payload.phone?.trim() || !isValidPhone(payload.phone)) return 'A valid phone number is required.'
+  if (payload.email?.trim() && !isValidEmail(payload.email.trim())) return 'Email address is invalid.'
+  if (!payload.businessType?.trim()) return 'Business type is required.'
+  if (!payload.city?.trim()) return 'City is required.'
+  if (!payload.requirement?.trim()) return 'Website requirement is required.'
+  const { details, ...short } = payload
+  if (Object.values(short).some((value) => value.length > MAX_FIELD_LENGTH)) return 'A field is too long.'
+  if (details.length > MAX_DETAILS_LENGTH) return 'Project details are too long.'
   return null
 }
 
@@ -55,17 +69,18 @@ export function isLikelySpam(honeypot: string, formLoadedAt: number, now: number
 }
 
 function buildEmailText(payload: ContactPayload): string {
-  return `🚀 New Freelance Inquiry
+  return `🚀 New Website Quote Request
 
 Name: ${payload.name}
-Email: ${payload.email}
-Phone: ${payload.phone || 'Not provided'}
-Company: ${payload.company || 'Not provided'}
-Project Type: ${payload.projectType}
+Phone / WhatsApp: ${payload.phone}
+Email: ${payload.email || 'Not provided'}
+Business Type: ${payload.businessType}
+City: ${payload.city}
+Requirement: ${payload.requirement}
 Budget: ${payload.budget || 'Not specified'}
 
-Message:
-${payload.message}
+Project Details:
+${payload.details || 'Not provided'}
 
 Submitted from:
 My Portfolio Website`
@@ -97,17 +112,18 @@ function buildEmailHtml(payload: ContactPayload): string {
             <tr>
               <td style="background:#4F46E5;padding:28px 32px;">
                 <p style="margin:0 0 6px;color:#c7d2fe;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">Yash Goel &mdash; Portfolio</p>
-                <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:700;">🚀 New Freelance Inquiry</h1>
+                <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:700;">🚀 New Website Quote Request</h1>
               </td>
             </tr>
             <tr>
               <td style="padding:28px 32px 8px;">
                 <table role="presentation" width="100%" style="border-collapse:collapse;">
                   ${row('Name', escapeHtml(payload.name))}
-                  ${row('Email', `<a href="mailto:${escapeHtml(payload.email)}" style="color:#4F46E5;text-decoration:none;">${escapeHtml(payload.email)}</a>`)}
-                  ${row('Phone', payload.phone ? escapeHtml(payload.phone) : 'Not provided')}
-                  ${row('Company', payload.company ? escapeHtml(payload.company) : 'Not provided')}
-                  ${row('Project Type', escapeHtml(payload.projectType))}
+                  ${row('Phone / WhatsApp', `<a href="https://wa.me/${payload.phone.replace(/\D/g, '')}" style="color:#4F46E5;text-decoration:none;">${escapeHtml(payload.phone)}</a>`)}
+                  ${row('Email', payload.email ? `<a href="mailto:${escapeHtml(payload.email)}" style="color:#4F46E5;text-decoration:none;">${escapeHtml(payload.email)}</a>` : 'Not provided')}
+                  ${row('Business Type', escapeHtml(payload.businessType))}
+                  ${row('City', escapeHtml(payload.city))}
+                  ${row('Requirement', escapeHtml(payload.requirement))}
                   ${row('Budget', payload.budget ? escapeHtml(payload.budget) : 'Not specified')}
                 </table>
               </td>
@@ -115,14 +131,14 @@ function buildEmailHtml(payload: ContactPayload): string {
             <tr>
               <td style="padding:12px 32px 28px;">
                 <div style="border-top:1px solid #e5e7eb;padding-top:16px;">
-                  <p style="margin:0 0 8px;color:#6b7280;font-size:12px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">Message</p>
-                  <p style="margin:0;color:#111827;font-size:14px;line-height:1.65;white-space:pre-wrap;">${escapeHtml(payload.message)}</p>
+                  <p style="margin:0 0 8px;color:#6b7280;font-size:12px;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;">Project Details</p>
+                  <p style="margin:0;color:#111827;font-size:14px;line-height:1.65;white-space:pre-wrap;">${payload.details ? escapeHtml(payload.details) : 'Not provided'}</p>
                 </div>
               </td>
             </tr>
             <tr>
               <td style="background:#f9fafb;padding:16px 32px;border-top:1px solid #e5e7eb;">
-                <p style="margin:0;color:#9ca3af;font-size:12px;">Submitted from your portfolio website&rsquo;s contact form.</p>
+                <p style="margin:0;color:#9ca3af;font-size:12px;">Submitted from your portfolio website&rsquo;s quote form.</p>
               </td>
             </tr>
           </table>
@@ -134,21 +150,21 @@ function buildEmailHtml(payload: ContactPayload): string {
 }
 
 function buildWhatsAppText(payload: ContactPayload): string {
-  return `🚀 NEW FREELANCE INQUIRY
+  return `🚀 NEW WEBSITE QUOTE REQUEST
 
 👤 Name: ${payload.name}
-📧 Email: ${payload.email}
-📱 Phone: ${payload.phone || 'Not provided'}
-🏢 Company: ${payload.company || 'Not provided'}
+📱 Phone: ${payload.phone}
+📧 Email: ${payload.email || 'Not provided'}
+🏢 Business: ${payload.businessType}, ${payload.city}
 
-💻 Project:
-${payload.projectType}
+💻 Requirement:
+${payload.requirement}
 
 💰 Budget:
 ${payload.budget || 'Not specified'}
 
-📝 Message:
-${payload.message}
+📝 Details:
+${payload.details || 'Not provided'}
 
 🔗 Source:
 Portfolio Website`
@@ -169,8 +185,8 @@ async function sendEmail(payload: ContactPayload, env: ContactEnv, deps: Contact
       body: JSON.stringify({
         from: env.EMAIL_FROM,
         to: [env.EMAIL_TO],
-        reply_to: payload.email,
-        subject: `New Freelance Inquiry — ${payload.projectType}`,
+        ...(payload.email ? { reply_to: payload.email } : {}),
+        subject: `New Website Quote — ${payload.businessType}, ${payload.city}`,
         text: buildEmailText(payload),
         html: buildEmailHtml(payload),
       }),
@@ -209,13 +225,15 @@ async function sendWhatsApp(payload: ContactPayload, env: ContactEnv, deps: Cont
             {
               type: 'body',
               parameters: [
+                // Same 7-slot order as before, so an already-approved template keeps working:
+                // name, email, phone, company → "business, city", project type → requirement, budget, message → details.
                 { type: 'text', text: payload.name },
-                { type: 'text', text: payload.email },
-                { type: 'text', text: payload.phone || 'Not provided' },
-                { type: 'text', text: payload.company || 'Not provided' },
-                { type: 'text', text: payload.projectType },
+                { type: 'text', text: payload.email || 'Not provided' },
+                { type: 'text', text: payload.phone },
+                { type: 'text', text: `${payload.businessType}, ${payload.city}` },
+                { type: 'text', text: payload.requirement },
                 { type: 'text', text: payload.budget || 'Not specified' },
-                { type: 'text', text: payload.message },
+                { type: 'text', text: payload.details || 'Not provided' },
               ],
             },
           ],
@@ -299,13 +317,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const body = req.body ?? {}
 
   const payload: ContactPayload = {
-    name: String(body.name ?? ''),
-    email: String(body.email ?? ''),
-    phone: String(body.phone ?? ''),
-    company: String(body.company ?? ''),
-    projectType: String(body.projectType ?? ''),
-    budget: String(body.budget ?? ''),
-    message: String(body.message ?? ''),
+    name: String(body.name ?? '').trim(),
+    phone: String(body.phone ?? '').trim(),
+    email: String(body.email ?? '').trim(),
+    businessType: String(body.businessType ?? '').trim(),
+    city: String(body.city ?? '').trim(),
+    requirement: String(body.requirement ?? '').trim(),
+    budget: String(body.budget ?? '').trim(),
+    details: String(body.details ?? '').trim(),
   }
   const honeypot = String(body.website ?? '')
   const formLoadedAt = Number(body.formLoadedAt ?? NaN)

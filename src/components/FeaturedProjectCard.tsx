@@ -17,22 +17,22 @@ export function FeaturedProjectCard({ project, delay = 0, onOpenCaseStudy }: Fea
       className="flex h-full flex-col rounded-2xl border border-border-strong bg-surface p-6 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover sm:p-7"
     >
       <div className="flex flex-wrap items-center gap-2">
-        <span className="rounded-full border border-border-strong px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-subtle">
+        <span className="rounded-full border border-border-strong px-3 py-1 text-xs font-medium uppercase tracking-wide text-subtle">
           {project.category}
         </span>
         {project.engagement === 'freelance' && (
-          <span className="rounded-full bg-accent-soft px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-accent">
+          <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-medium uppercase tracking-wide text-accent">
             Freelance
           </span>
         )}
         {isEnterprise && (
-          <span className="inline-flex items-center gap-1.5 rounded-full border border-border-strong px-3 py-1 text-[11px] font-medium text-subtle">
+          <span className="inline-flex items-center gap-1.5 rounded-full border border-border-strong px-3 py-1 text-xs font-medium text-subtle">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-subtle" />
             Enterprise Project
           </span>
         )}
         {project.liveUrl && (
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-3 py-1 text-[11px] font-medium text-success">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-3 py-1 text-xs font-medium text-success">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-success" />
             Live
           </span>
@@ -46,15 +46,15 @@ export function FeaturedProjectCard({ project, delay = 0, onOpenCaseStudy }: Fea
 
       <div className="mt-5 space-y-4">
         <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent">Problem / Purpose</p>
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-accent">Problem / Purpose</p>
           <p className="mt-1.5 text-sm leading-relaxed text-muted">{project.detail.challenge}</p>
         </div>
         <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent">What I Built</p>
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-accent">What I Built</p>
           <p className="mt-1.5 text-sm leading-relaxed text-muted">{project.detail.solution}</p>
         </div>
         <div>
-          <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent">Key Features</p>
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-accent">Key Features</p>
           <ul className="mt-1.5 space-y-1.5">
             {project.detail.features.slice(0, 3).map((feature) => (
               <li key={feature} className="flex gap-2.5 text-sm leading-relaxed text-muted">
@@ -67,7 +67,7 @@ export function FeaturedProjectCard({ project, delay = 0, onOpenCaseStudy }: Fea
       </div>
 
       <div className="mt-5">
-        <p className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent">Technology</p>
+        <p className="font-mono text-xs uppercase tracking-[0.15em] text-accent">Technology</p>
         <div className="mt-2 flex flex-wrap gap-2">
           {project.tech.map((tech) => (
             <span key={tech} className="rounded-full bg-accent-soft px-2.5 py-1 text-xs font-medium text-accent">

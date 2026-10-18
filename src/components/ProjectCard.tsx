@@ -16,29 +16,29 @@ export function ProjectCard({ project, delay = 0, onOpen }: ProjectCardProps) {
     >
       <div className="flex items-start justify-between gap-4">
         <div className="flex flex-wrap items-center gap-2">
-          <span className="rounded-full border border-border-strong px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-subtle">
+          <span className="rounded-full border border-border-strong px-3 py-1 text-xs font-medium uppercase tracking-wide text-subtle">
             {project.category}
           </span>
           {project.engagement === 'freelance' && (
-            <span className="rounded-full bg-accent-soft px-3 py-1 text-[11px] font-medium uppercase tracking-wide text-accent">
+            <span className="rounded-full bg-accent-soft px-3 py-1 text-xs font-medium uppercase tracking-wide text-accent">
               Freelance
             </span>
           )}
         </div>
         {project.liveUrl && (
-          <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-success/10 px-3 py-1 text-[11px] font-medium text-success">
+          <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full bg-success/10 px-3 py-1 text-xs font-medium text-success">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-success" />
             Live
           </span>
         )}
         {!project.liveUrl && project.inProduction && (
-          <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-border-strong px-3 py-1 text-[11px] font-medium text-subtle">
+          <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-border-strong px-3 py-1 text-xs font-medium text-subtle">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-subtle" />
             In Production
           </span>
         )}
         {!project.liveUrl && !project.inProduction && project.inDevelopment && (
-          <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-border-strong px-3 py-1 text-[11px] font-medium text-subtle">
+          <span className="inline-flex shrink-0 items-center gap-1.5 whitespace-nowrap rounded-full border border-border-strong px-3 py-1 text-xs font-medium text-subtle">
             <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-subtle" />
             In Development
           </span>

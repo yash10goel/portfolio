@@ -91,3 +91,26 @@ export interface ProcessStep {
   title: string
   description: string
 }
+
+export interface WebsitePackage {
+  id: string
+  name: string
+  /** Starting price as displayed, e.g. "₹10,000". */
+  price: string
+  summary: string
+  features: string[]
+  /** Prefilled WhatsApp message for this package's CTA. */
+  whatsappMessage: string
+  highlighted?: boolean
+}
+
+export interface DemoProperty {
+  id: string
+  title: string
+  type: 'Apartment' | 'Plot' | 'Commercial'
+  location: string
+  price: string
+  size: string
+  details: string[]
+  status: string
+}

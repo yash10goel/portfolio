@@ -19,8 +19,8 @@ export function Projects() {
       <Container>
         <SectionHeading
           eyebrow="Featured Projects"
-          title="Enterprise applications, shipped."
-          description="The strongest examples of what I build full-stack or led on the frontend — from identity platforms to a live client site."
+          title="Real projects, shipped."
+          description="Live client websites alongside the enterprise applications I've built full-stack or led on the frontend."
           className="mb-16"
         />
 

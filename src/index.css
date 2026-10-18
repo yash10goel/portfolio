@@ -10,8 +10,12 @@
   --color-border-strong: 48 51 66;
   --color-text: 245 246 250;
   --color-muted: 160 166 187;
-  --color-subtle: 106 112 132;
+  --color-subtle: 124 130 150;
   --color-accent: 108 140 255;
+  /* Solid fills behind white text (primary buttons, badges) — deeper than
+     --color-accent so white labels meet WCAG AA 4.5:1. */
+  --color-accent-fill: 76 104 238;
+  --color-accent-fill-hover: 66 94 228;
   --color-accent-strong: 145 168 255;
   --color-accent-soft: 26 33 58;
   --color-success: 74 222 128;
@@ -27,11 +31,13 @@
   --color-border-strong: 206 209 220;
   --color-text: 16 18 27;
   --color-muted: 90 97 115;
-  --color-subtle: 132 138 154;
+  --color-subtle: 107 113 130;
   --color-accent: 74 102 235;
+  --color-accent-fill: 74 102 235;
+  --color-accent-fill-hover: 54 82 219;
   --color-accent-strong: 54 82 219;
   --color-accent-soft: 233 237 255;
-  --color-success: 21 148 68;
+  --color-success: 21 128 61;
   --color-danger: 220 38 38;
   --color-danger-soft: 254 226 226;
 }

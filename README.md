@@ -8,7 +8,7 @@ A premium, freelance-focused portfolio site for Yash Goel, Full-Stack Developer 
 - **Vite** — build tool & dev server
 - **Tailwind CSS** — styling, with a CSS-variable-driven light/dark theme system
 - No heavy UI/animation libraries — scroll reveals, marquee and hover states are hand-rolled with `IntersectionObserver` and CSS, respecting `prefers-reduced-motion`
-- **Vercel Serverless Function** (`api/contact.ts`) — receives contact-form submissions and fans them out to email (Resend) and WhatsApp (Meta WhatsApp Cloud API); this is where all provider credentials live, never in the browser
+- **Vercel Serverless Function** (`api/contact.ts`) — receives quote-form submissions and fans them out to email (Resend) and WhatsApp (Meta WhatsApp Cloud API); this is where all provider credentials live, never in the browser
 
 ## Project Structure
 
@@ -16,7 +16,7 @@ A premium, freelance-focused portfolio site for Yash Goel, Full-Stack Developer 
 api/
 └── contact.ts    # Serverless function: validates, spam-checks, sends email + WhatsApp
 src/
-├── components/   # Reusable UI (Navbar, Footer, Button, ProjectCard, ProjectModal, ContactForm, icons...)
+├── components/   # Reusable UI (Navbar, Footer, Button, ProjectCard, ProjectModal, QuoteForm, FormField, WhatsAppCTA, icons...)
 ├── sections/     # Page sections (Hero, About, Skills, Experience, Projects, Services, Process, Contact...)
 ├── pages/        # Home.tsx composes all sections
 ├── data/         # Content — profile, experience, projects, skills, services (single source of truth)
@@ -35,7 +35,7 @@ npm install
 npm run dev
 ```
 
-The dev server runs at `http://localhost:5173` by default. This runs the **frontend only** — the contact form's `/api/contact` call will 404 under plain `npm run dev` since Vite doesn't run serverless functions. To test the contact form end-to-end locally, use `vercel dev` instead (see "Contact Form Notifications" below).
+The dev server runs at `http://localhost:5173` by default. This runs the **frontend only** — the quote form's `/api/contact` call will fail under plain `npm run dev` since Vite doesn't run serverless functions (the form then shows its error state with a WhatsApp fallback — it never fakes success). To test the quote form end-to-end locally, use `vercel dev` instead (see "Contact Form Notifications" below).
 
 ## Available Scripts
 
@@ -54,14 +54,28 @@ All resume-derived content lives in `src/data/`:
 - `experience.ts` — work history / timeline
 - `projects.ts` — featured project case studies (edit `challenge`, `solution`, `role`, `features`, `highlights`, `outcome` per project; add `liveUrl` to link a live site)
 - `skills.ts` — tech strip + skill group cards
-- `services.ts` — freelance services + "How I Work" process steps
+- `services.ts` — freelance services + "How It Works" process steps
+- `offer.ts` — website packages (prices, inclusions, per-package WhatsApp messages), the "not included" list, and the quote-form dropdown options
+- `realEstateDemo.ts` — sample listings for the illustrative real estate concept (clearly labelled on the page as sample data — keep it that way)
 
-## Contact Form Notifications (Email + WhatsApp)
+## WhatsApp CTAs & Quote Form
 
-Every contact-form submission is sent to `api/contact.ts`, a Vercel serverless function that validates the input, runs a lightweight spam check, and then notifies you on **both** email and WhatsApp in parallel. All credentials live in environment variables on the server — nothing sensitive ever reaches the browser.
+All click-to-chat buttons (hero, packages, real estate demo, quote section, footer, floating button) use `src/components/WhatsAppCTA.tsx` and `whatsappHref()` in `src/utils/whatsapp.ts`, which strips non-digits from the number and URI-encodes the prefilled message. The default prefill is `BUSINESS_ENQUIRY_MESSAGE` in that file.
+
+**Setting the number:** set `VITE_WHATSAPP_NUMBER` (international format, digits only, e.g. `919876543210`) in `.env.local` for local dev and in **Vercel → Project Settings → Environment Variables** for production, then redeploy (Vite inlines `VITE_*` values at build time). If the env var is unset, `src/data/profile.ts` falls back to the number hardcoded there; set that fallback to `''` to hide every WhatsApp CTA instead.
+
+**Quote form (`src/components/QuoteForm.tsx`) — the site's only form:** collects name, phone/WhatsApp (required), email (optional), business type, city, website requirement (including custom web app / dashboard / API and fixes to existing sites), approximate budget (optional) and project details (optional). Validation lives in `src/utils/contactValidation.ts`. On submit it POSTs to `/api/contact` (see below) with a honeypot field and a fill-time check against bots. The success message is shown **only** after a 2xx response. If the request fails, the visitor keeps their input and gets a "Send details on WhatsApp" button with everything prefilled, plus your email address.
+
+## Social Sharing / SEO
+
+`index.html` holds the title, description, canonical URL, Open Graph/Twitter tags and JSON-LD, all pointing at `https://yashgoeldev.vercel.app/`. If you move to a custom domain, update those URLs plus `public/robots.txt` and `public/sitemap.xml`. The share image is `public/og-image.png` (1200×630 PNG; WhatsApp and Facebook don't render SVG preview images).
+
+## Quote Form Notifications (Email + WhatsApp)
+
+Every quote-form submission is sent to `api/contact.ts`, a Vercel serverless function that validates the input, runs a lightweight spam check, and then notifies you on **both** email and WhatsApp in parallel. All credentials live in environment variables on the server — nothing sensitive ever reaches the browser.
 
 ```text
-Contact Form → POST /api/contact → validate + spam-check
+Quote Form → POST /api/contact → validate + spam-check
                                           │
                               ┌───────────┴───────────┐
                               ▼                       ▼
@@ -125,16 +139,16 @@ This is the part most guides skip, and it will bite you if you don't plan for it
   2. Category: **Utility**.
   3. Body text (exactly, so the variable order matches the code):
      ```text
-     🚀 New Freelance Inquiry
+     🚀 New Website Quote Request
 
      Name: {{1}}
      Email: {{2}}
      Phone: {{3}}
-     Company: {{4}}
-     Project Type: {{5}}
+     Business & City: {{4}}
+     Requirement: {{5}}
      Budget: {{6}}
 
-     Message: {{7}}
+     Details: {{7}}
      ```
   4. Submit for review. Simple utility templates like this are typically reviewed quickly, but Meta's approval isn't instant or guaranteed — don't assume it'll be live the same day you launch.
   5. Once **approved**, set:
@@ -143,7 +157,7 @@ This is the part most guides skip, and it will bite you if you don't plan for it
      WHATSAPP_TEMPLATE_LANG=en_US
      ```
      `api/contact.ts` automatically switches to sending the approved template instead of free-form text as soon as `WHATSAPP_TEMPLATE_NAME` is set — no code changes needed.
-- Until the template is approved, you can still test the free-form path by messaging your test number from your phone first, then submitting the contact form within 24 hours.
+- Until the template is approved, you can still test the free-form path by messaging your test number from your phone first, then submitting the quote form within 24 hours.
 
 **Sandbox/testing limitations:** Meta's test phone number can message unlimited numbers during development but shows extra restrictions/branding in some views; a small number of pre-registered test recipients is standard for pre-launch testing. For production you'd typically move to your own registered number and a verified Meta Business Account.
 
@@ -188,7 +202,7 @@ Note: this does **not** include IP-based rate limiting — serverless functions 
 
 - `public/og-image.svg` — swap for a real 1200×630 PNG/JPG social preview image for maximum compatibility across platforms (most modern platforms support SVG, but not all)
 - `index.html` — update `og:url` / `canonical` URL once you have a real domain
-- All contact-form environment variables (see above) — the form UI and backend logic are fully implemented, but notifications won't send until real credentials are configured
+- All quote-form environment variables (see above) — the form UI and backend logic are fully implemented, but notifications won't send until real credentials are configured
 - Optionally add a professional photo/avatar if you'd like one in the Hero or About section
 
 ## Production Build
@@ -201,7 +215,7 @@ Outputs a static site to `dist/`. Verified locally: `tsc -b` passes with no erro
 
 ## Deployment
 
-The contact form's email + WhatsApp notifications depend on `api/contact.ts`, a **Vercel serverless function**. Deploy to Vercel to get that working with zero extra configuration:
+The quote form's email + WhatsApp notifications depend on `api/contact.ts`, a **Vercel serverless function**. Deploy to Vercel to get that working with zero extra configuration:
 
 **Vercel**
 ```bash
@@ -211,7 +225,7 @@ vercel --prod
 Then add every environment variable from `.env.example` in **Project Settings → Environment Variables** (for Production, and Preview/Development if you want them there too), and redeploy.
 
 **Other static hosts (Netlify, GitHub Pages, etc.)**
-The rest of the site is a static build (`dist/`) and can be hosted anywhere. However, `api/contact.ts` is written specifically for Vercel's Node serverless function signature (`VercelRequest`/`VercelResponse`) — on another platform you'd need to port it to that platform's function format (e.g. Netlify Functions) and update the fetch URL in `src/utils/contactService.ts` if the endpoint path differs. Without this, the contact form's `fetch('/api/contact')` call will simply 404 and notifications won't send.
+The rest of the site is a static build (`dist/`) and can be hosted anywhere. However, `api/contact.ts` is written specifically for Vercel's Node serverless function signature (`VercelRequest`/`VercelResponse`) — on another platform you'd need to port it to that platform's function format (e.g. Netlify Functions) and update the fetch URL in `src/utils/contactService.ts` if the endpoint path differs. Without this, the quote form's `fetch('/api/contact')` call will simply 404 and notifications won't send.
 
 Remember to set the correct `og:url` / `canonical` values in `index.html` once you have a production domain.
 "# portfolio" 

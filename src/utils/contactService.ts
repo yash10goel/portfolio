@@ -1,14 +1,6 @@
-export interface ContactFormPayload {
-  name: string
-  email: string
-  phone: string
-  company: string
-  projectType: string
-  budget: string
-  message: string
-}
+import type { QuoteFormValues } from '@/utils/contactValidation'
 
-interface SubmitContactFormOptions {
+interface SubmitQuoteOptions {
   /** Honeypot field — should always be empty when submitted by a human. */
   honeypot: string
   /** Timestamp (ms) captured when the form first mounted, used as a lightweight bot-timing check. */
@@ -19,12 +11,10 @@ interface SubmitContactFormOptions {
  * Posts to the /api/contact serverless function, which fans the submission
  * out to an email notification (Resend) and a WhatsApp notification (Meta
  * WhatsApp Cloud API). Credentials for both live server-side only — see
- * api/contact.ts.
+ * api/contact.ts. Throws on any non-2xx response so the UI never shows a
+ * success message for a request that wasn't delivered.
  */
-export async function submitContactForm(
-  payload: ContactFormPayload,
-  options: SubmitContactFormOptions,
-): Promise<{ ok: true }> {
+export async function submitQuoteRequest(payload: QuoteFormValues, options: SubmitQuoteOptions): Promise<{ ok: true }> {
   const response = await fetch('/api/contact', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -36,7 +26,7 @@ export async function submitContactForm(
   })
 
   if (!response.ok) {
-    throw new Error('Failed to send message')
+    throw new Error('Failed to send quote request')
   }
 
   return { ok: true }

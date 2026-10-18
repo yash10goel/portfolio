@@ -1,7 +1,7 @@
 import { Container } from '@/components/Container'
-import { ChatIcon, GitHubIcon, LinkedInIcon, MailIcon } from '@/components/icons'
+import { WhatsAppCTA } from '@/components/WhatsAppCTA'
+import { GitHubIcon, LinkedInIcon, MailIcon } from '@/components/icons'
 import { navLinks, profile, socialLinks } from '@/data/profile'
-import { whatsappHref } from '@/utils/whatsapp'
 
 const iconMap = {
   email: MailIcon,
@@ -21,8 +21,9 @@ export function Footer() {
           </a>
           <p className="mt-1 text-sm font-medium text-accent">{profile.role}</p>
           <p className="mt-3 text-sm leading-relaxed text-muted">
-            Building modern web applications and enterprise solutions.
+            Professional websites for local businesses, from ₹10,000 &mdash; plus custom web applications and APIs.
           </p>
+          <WhatsAppCTA className="mt-5">Get a quote on WhatsApp</WhatsAppCTA>
         </div>
 
         <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
@@ -49,17 +50,6 @@ export function Footer() {
               </a>
             )
           })}
-          {profile.whatsapp && (
-            <a
-              href={whatsappHref(profile.whatsapp)}
-              target="_blank"
-              rel="noreferrer"
-              aria-label="WhatsApp"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-border-strong text-muted transition-colors hover:border-accent hover:text-accent"
-            >
-              <ChatIcon width={17} height={17} />
-            </a>
-          )}
         </div>
       </Container>
 

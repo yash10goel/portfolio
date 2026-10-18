@@ -18,12 +18,13 @@ export const profile: Profile = {
 }
 
 export const navLinks: NavLink[] = [
+  { label: 'Packages', href: '#packages' },
+  { label: 'Demo', href: '#demo' },
+  { label: 'Work', href: '#projects' },
+  { label: 'Process', href: '#process' },
   { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Skills', href: '#skills' },
   { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '#quote' },
 ]
 
 export const socialLinks: SocialLink[] = [
