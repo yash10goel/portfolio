@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react'
 import { ThemeProvider } from '@/hooks/useTheme'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
@@ -19,6 +20,8 @@ function App() {
       </main>
       <Footer />
       <WhatsAppButton />
+      {/* Vercel Web Analytics: page views only (no custom events). Requires Analytics enabled for the project in Vercel. */}
+      <Analytics />
     </ThemeProvider>
   )
 }
