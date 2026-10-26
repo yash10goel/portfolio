@@ -14,7 +14,7 @@ export const profile: Profile = {
   resumeUrl: '/resume.pdf',
   // VITE_WHATSAPP_NUMBER (set in .env.local / Vercel env vars) overrides this if present.
   // Falls back to the real number directly so WhatsApp CTAs work even without that env var set.
-  whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER ?? '919084386006',
+  whatsapp: import.meta.env.VITE_WHATSAPP_NUMBER ?? '919266110081',
 }
 
 export const navLinks: NavLink[] = [

@@ -9,14 +9,19 @@ const iconMap = {
   github: GitHubIcon,
 }
 
-export function Footer() {
+interface FooterProps {
+  /** Prefix for the in-page section links, e.g. "/" when the footer is rendered on /privacy-policy. */
+  linkBase?: string
+}
+
+export function Footer({ linkBase = '' }: FooterProps) {
   const year = new Date().getFullYear()
 
   return (
     <footer className="border-t border-border">
       <Container className="flex flex-col gap-8 py-12 md:flex-row md:items-start md:justify-between">
         <div className="max-w-xs">
-          <a href="#home" className="font-display text-lg font-semibold tracking-tight text-text">
+          <a href={`${linkBase}#home`} className="font-display text-lg font-semibold tracking-tight text-text">
             {profile.name}
           </a>
           <p className="mt-1 text-sm font-medium text-accent">{profile.role}</p>
@@ -28,7 +33,7 @@ export function Footer() {
 
         <nav className="flex flex-wrap gap-x-6 gap-y-2" aria-label="Footer">
           {navLinks.map((link) => (
-            <a key={link.href} href={link.href} className="text-sm text-muted transition-colors hover:text-text">
+            <a key={link.href} href={`${linkBase}${link.href}`} className="text-sm text-muted transition-colors hover:text-text">
               {link.label}
             </a>
           ))}
@@ -57,7 +62,12 @@ export function Footer() {
         <p>
           © {year} {profile.name}. All rights reserved.
         </p>
-        <p>Built with React, TypeScript &amp; Tailwind CSS.</p>
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          <a href="/privacy-policy" className="text-muted underline-offset-4 transition-colors hover:text-accent hover:underline">
+            Privacy Policy
+          </a>
+          <p>Built with React, TypeScript &amp; Tailwind CSS.</p>
+        </div>
       </Container>
     </footer>
   )
