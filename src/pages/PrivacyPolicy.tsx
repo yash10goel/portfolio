@@ -17,34 +17,26 @@ const PAGE_TITLE = `Privacy Policy | ${policyBrand} — Yash Goel`
 const PAGE_DESCRIPTION = `How ${policyBrand} collects and uses information from the website quote form, Meta lead forms, WhatsApp, phone and email.`
 const PAGE_URL = 'https://yashgoeldev.vercel.app/privacy-policy'
 
-const TOKEN = /\[NEEDS CONFIRMATION:[^\]]*\]|\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g
+const LINK = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g
 
-/** Renders inline `[text](url)` links and highlights `[NEEDS CONFIRMATION: …]` placeholders. */
+/** Renders inline `[text](url)` markers as external links. */
 function RichText({ text }: { text: string }) {
   const parts: ReactNode[] = []
   let last = 0
-  for (const match of text.matchAll(TOKEN)) {
+  for (const match of text.matchAll(LINK)) {
     const index = match.index ?? 0
     if (index > last) parts.push(text.slice(last, index))
-    if (match[2]) {
-      parts.push(
-        <a
-          key={index}
-          href={match[2]}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="font-medium text-accent underline-offset-4 hover:underline"
-        >
-          {match[1]}
-        </a>,
-      )
-    } else {
-      parts.push(
-        <mark key={index} className="rounded bg-[#f5a524]/15 px-1 py-0.5 font-medium text-text ring-1 ring-[#f5a524]/40">
-          {match[0]}
-        </mark>,
-      )
-    }
+    parts.push(
+      <a
+        key={index}
+        href={match[2]}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="font-medium text-accent underline-offset-4 hover:underline"
+      >
+        {match[1]}
+      </a>,
+    )
     last = index + match[0].length
   }
   if (last < text.length) parts.push(text.slice(last))
@@ -180,12 +172,9 @@ export function PrivacyPolicy() {
                         </span>
                       </li>
                     )}
-                    <li className="flex items-start gap-3">
-                      <GlobeIcon width={16} height={16} className="mt-0.5 shrink-0 text-subtle" />
-                      <span className="text-muted">
-                        {profile.location}.{' '}
-                        <RichText text="[NEEDS CONFIRMATION: add a postal address only if you want one published; otherwise remove this note.]" />
-                      </span>
+                    <li className="flex items-center gap-3">
+                      <GlobeIcon width={16} height={16} className="shrink-0 text-subtle" />
+                      <span className="text-muted">{profile.location}</span>
                     </li>
                   </ul>
                   <div className="mt-6 flex flex-col gap-3 border-t border-border pt-6 sm:flex-row">
